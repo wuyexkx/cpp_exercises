@@ -1,4 +1,0 @@
-C:/cpp/TM/build/CMakeFiles/TM.dir
-C:/cpp/TM/build/CMakeFiles/edit_cache.dir
-C:/cpp/TM/build/CMakeFiles/main.dir
-C:/cpp/TM/build/CMakeFiles/rebuild_cache.dir

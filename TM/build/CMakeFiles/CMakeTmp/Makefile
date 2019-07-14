@@ -23,6 +23,9 @@ SUFFIXES =
 .SUFFIXES: .hpux_make_needs_suffix_list
 
 
+# Produce verbose output by default.
+VERBOSE = 1
+
 # Suppress display of executed commands.
 $(VERBOSE).SILENT:
 
@@ -48,17 +51,17 @@ RM = "C:/Program Files/CMake/bin/cmake.exe" -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:/cpp/TM
+CMAKE_SOURCE_DIR = C:/cpp/TM/build/CMakeFiles/CMakeTmp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:/cpp/TM/build
+CMAKE_BINARY_DIR = C:/cpp/TM/build/CMakeFiles/CMakeTmp
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	@echo "Running CMake cache editor..."
 	"C:/Program Files/CMake/bin/cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
@@ -69,7 +72,7 @@ edit_cache/fast: edit_cache
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	@echo "Running CMake to regenerate build system..."
 	"C:/Program Files/CMake/bin/cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
@@ -79,10 +82,10 @@ rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
 # The main all target
-all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:/cpp/TM/build/CMakeFiles C:/cpp/TM/build/CMakeFiles/progress.marks
+all:
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/cpp/TM/build/CMakeFiles/CMakeTmp/CMakeFiles C:/cpp/TM/build/CMakeFiles/CMakeTmp/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:/cpp/TM/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/cpp/TM/build/CMakeFiles/CMakeTmp/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -105,118 +108,61 @@ preinstall/fast:
 	$(MAKE) -f CMakeFiles/Makefile2 preinstall
 .PHONY : preinstall/fast
 
-# clear depends
-depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
-.PHONY : depend
-
 #=============================================================================
-# Target rules for targets named TM
+# Target rules for targets named cmTC_e3175
 
 # Build rule for target.
-TM: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 TM
-.PHONY : TM
+cmTC_e3175:
+	$(MAKE) -f CMakeFiles/Makefile2 cmTC_e3175
+.PHONY : cmTC_e3175
 
 # fast build rule for target.
-TM/fast:
-	$(MAKE) -f CMakeFiles/TM.dir/build.make CMakeFiles/TM.dir/build
-.PHONY : TM/fast
+cmTC_e3175/fast:
+	$(MAKE) -f CMakeFiles/cmTC_e3175.dir/build.make CMakeFiles/cmTC_e3175.dir/build
+.PHONY : cmTC_e3175/fast
 
-#=============================================================================
-# Target rules for targets named main
+CMakeCXXCompilerABI.obj: CMakeCXXCompilerABI.cpp.obj
 
-# Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 main
-.PHONY : main
-
-# fast build rule for target.
-main/fast:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
-
-main.obj: main.cpp.obj
-
-.PHONY : main.obj
+.PHONY : CMakeCXXCompilerABI.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+CMakeCXXCompilerABI.cpp.obj:
+	$(MAKE) -f CMakeFiles/cmTC_e3175.dir/build.make CMakeFiles/cmTC_e3175.dir/CMakeCXXCompilerABI.cpp.obj
+.PHONY : CMakeCXXCompilerABI.cpp.obj
 
-main.i: main.cpp.i
+CMakeCXXCompilerABI.i: CMakeCXXCompilerABI.cpp.i
 
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
-.PHONY : main.cpp.s
-
-src/TicketMachine.obj: src/TicketMachine.cpp.obj
-
-.PHONY : src/TicketMachine.obj
-
-# target to build an object file
-src/TicketMachine.cpp.obj:
-	$(MAKE) -f CMakeFiles/TM.dir/build.make CMakeFiles/TM.dir/src/TicketMachine.cpp.obj
-.PHONY : src/TicketMachine.cpp.obj
-
-src/TicketMachine.i: src/TicketMachine.cpp.i
-
-.PHONY : src/TicketMachine.i
+.PHONY : CMakeCXXCompilerABI.i
 
 # target to preprocess a source file
-src/TicketMachine.cpp.i:
-	$(MAKE) -f CMakeFiles/TM.dir/build.make CMakeFiles/TM.dir/src/TicketMachine.cpp.i
-.PHONY : src/TicketMachine.cpp.i
+CMakeCXXCompilerABI.cpp.i:
+	$(MAKE) -f CMakeFiles/cmTC_e3175.dir/build.make CMakeFiles/cmTC_e3175.dir/CMakeCXXCompilerABI.cpp.i
+.PHONY : CMakeCXXCompilerABI.cpp.i
 
-src/TicketMachine.s: src/TicketMachine.cpp.s
+CMakeCXXCompilerABI.s: CMakeCXXCompilerABI.cpp.s
 
-.PHONY : src/TicketMachine.s
+.PHONY : CMakeCXXCompilerABI.s
 
 # target to generate assembly for a file
-src/TicketMachine.cpp.s:
-	$(MAKE) -f CMakeFiles/TM.dir/build.make CMakeFiles/TM.dir/src/TicketMachine.cpp.s
-.PHONY : src/TicketMachine.cpp.s
+CMakeCXXCompilerABI.cpp.s:
+	$(MAKE) -f CMakeFiles/cmTC_e3175.dir/build.make CMakeFiles/cmTC_e3175.dir/CMakeCXXCompilerABI.cpp.s
+.PHONY : CMakeCXXCompilerABI.cpp.s
 
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
-	@echo "... depend"
-	@echo "... TM"
 	@echo "... edit_cache"
-	@echo "... main"
+	@echo "... cmTC_e3175"
 	@echo "... rebuild_cache"
-	@echo "... main.obj"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... src/TicketMachine.obj"
-	@echo "... src/TicketMachine.i"
-	@echo "... src/TicketMachine.s"
+	@echo "... CMakeCXXCompilerABI.obj"
+	@echo "... CMakeCXXCompilerABI.i"
+	@echo "... CMakeCXXCompilerABI.s"
 .PHONY : help
 
 
 
 #=============================================================================
 # Special targets to cleanup operation of make.
-
-# Special rule to run CMake to check the build system integrity.
-# No rule that depends on this can have commands that come from listfiles
-# because they might be regenerated.
-cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
-.PHONY : cmake_check_build_system
 
