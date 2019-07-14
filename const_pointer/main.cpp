@@ -13,7 +13,7 @@ class A {
 private:
     int i;
 public:
-    A():i(0){cout << "A::A()" <<endl;}; //ÔÚ¹¹Ôìº¯ÊýÖÐ³õÊ¼»¯³ÉÔ±±äÁ¿
+    A():i(0){cout << "A::A()" <<endl;}; //åœ¨æž„é€ å‡½æ•°ä¸­åˆå§‹åŒ–æˆå‘˜å˜é‡
     void ff() const;
 };
 void A::ff() const {
@@ -36,7 +36,7 @@ public:
 int main()
 {
 //    char *a = "hello world!";
-//    a[0] = 'a'; //aÖ¸ÏòµÄ¿Õ¼äÎªconst¿Õ¼ä£¬ÔÚ´úÂë¶ÎÀï£¬¿É¶Á²»¿ÉÐ´
+//    a[0] = 'a'; //aæŒ‡å‘çš„ç©ºé—´ä¸ºconstç©ºé—´ï¼Œåœ¨ä»£ç æ®µé‡Œï¼Œå¯è¯»ä¸å¯å†™
 //    cout << a << endl;
 
     const B b;

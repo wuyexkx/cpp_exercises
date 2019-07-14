@@ -23,5 +23,5 @@ add_executable(main main.cpp)
 target_link_libraries(main TM)
 
 # ==================================Note:================================
-# in windows, must use " cmake -G"Unix Makefiles" ../ " before "cmake .."
+# in windows, must use "=====cmake -G "Unix Makefiles" ../=====" before "cmake .."
 
