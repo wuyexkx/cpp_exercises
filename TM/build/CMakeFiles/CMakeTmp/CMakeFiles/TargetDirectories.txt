@@ -1,3 +1,0 @@
-C:/cpp/TM/build/CMakeFiles/CMakeTmp/CMakeFiles/edit_cache.dir
-C:/cpp/TM/build/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_e3175.dir
-C:/cpp/TM/build/CMakeFiles/CMakeTmp/CMakeFiles/rebuild_cache.dir
