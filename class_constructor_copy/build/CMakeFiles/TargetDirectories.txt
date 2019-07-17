@@ -1,4 +1,0 @@
-/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build/CMakeFiles/rebuild_cache.dir
-/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build/CMakeFiles/my_func.dir
-/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build/CMakeFiles/edit_cache.dir
-/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build/CMakeFiles/main.dir
