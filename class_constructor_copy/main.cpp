@@ -12,19 +12,13 @@ int main()
     cout << "p1.imag: " << p1.imag() << endl;
 
     complex p2(1, 1);
-    complex p3(3, 3);
+    complex p3 = p1 + 1;
+    complex p4 = 1 + p1;
 
-    cout << "p2.real: " << p2.real() << endl;
-    cout << "p2.imag: " << p2.imag() << endl;
-
-    p1 += p2 += p3;
-
-    cout << "p11.real: " << p1.real() << endl;
-    cout << "p11.imag: " << p1.imag() << endl;
-
-    cout << "p22.real: " << p2.real() << endl;
-    cout << "p22.imag: " << p2.imag() << endl;
-
+    cout << "p3.real: " << p3.real() << endl;
+    cout << "p3.imag: " << p3.imag() << endl;
+    cout << "p4.real: " << p4.real() << endl;
+    cout << "p4.imag: " << p4.imag() << endl;
 
     return 0;
 }

@@ -4,7 +4,7 @@
 // 前置声明,防止类的深度耦合导致的相互编译不通过
 // class complex;
 
-
+//====================1. 操作赋重载-1，成员函数===========================
 // 类声明
 class complex
 {
@@ -27,10 +27,9 @@ private:
 // 声明友元，可以使用private数据
 // 第一个参数为complex指针，在
 friend complex& __doapl (complex* , const complex&);
-friend complex& __domns (complex* , const complex&);
+friend complex& __doamns (complex* , const complex&);
 
 };
-
 
 // 关键字inline 必须与函数定义体放在一起才能使函数成为内联，仅将inline 放在函数声明前面不起任何作用。
 // 所以说，inline 是一种“用于实现的关键字”，而不是一种“用于声明的关键字”。
@@ -44,10 +43,10 @@ __doapl (complex* ths, const complex& r)
     return *ths; // 传入此对象的指针，返回此对象（不用关心接收是reference还是value）
 }
 inline complex&
-__domns (complex *ths, const complex& r)
+__doamns (complex *ths, const complex& r)
 {
-    ths->real -= r.re;
-    ths->imag -= r.im;
+    ths->re -= r.re;
+    ths->im -= r.im;
     return *ths;
 }
 // 定义 重载操作符函数
@@ -62,8 +61,37 @@ complex::operator += (const complex& r)
 inline complex&
 complex::operator -= (const complex& r)
 {
-    return __domns(this, r);
+    return __doamns(this, r);
 }
+
+
+//====================2. 操作赋重载-2，非成员函数===========================
+inline double real(const complex& x)
+{
+    return x.real();
+}
+inline double imag(const complex& x)
+{
+    return x.imag();
+}
+
+inline complex
+operator + (const complex& x, const complex& y)
+{
+    return complex (x.real() + y.real(),
+                    x.imag() + y.imag());
+}
+inline complex
+operator + (const complex& x, double r)
+{
+    return complex(x.real() + r, x.imag());
+}
+inline complex
+operator + (double r, const complex& x)
+{
+    return complex(r + x.real(), x.imag());
+}
+
 
 #endif
 
