@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build",
+  "command": "/usr/bin/c++   -I/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/./include  -g   -std=c++11 -o CMakeFiles/my_func.dir/src/operator_overloading.cpp.o -c /home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/src/operator_overloading.cpp",
+  "file": "/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/src/operator_overloading.cpp"
+},
+{
+  "directory": "/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build",
+  "command": "/usr/bin/c++   -I/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/./include  -g   -std=c++11 -o CMakeFiles/main.dir/main.cpp.o -c /home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/main.cpp",
+  "file": "/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/main.cpp"
+}
+]

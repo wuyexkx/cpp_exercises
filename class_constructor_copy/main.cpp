@@ -1,26 +1,18 @@
 #include <iostream>
+#include "operator_overloading.h"
 
 using namespace std;
 
 
-class A
-{
-private:
-    int private_num = 10;
-public:
-    A(int num);
-    A(const A &a);
-    ~A();
-    void show();
-};
-A::A(int num){cout << "constructor" << endl; private_num = num;}
-A::A(const A &a){cout << "copyConstructor" << private_num << endl;}
-A::~A(){cout << "deconstructor" << endl;}
-void A::show(){cout << "private_num" << private_num << endl;}
-
-
 int main()
 {
-    A a(10);
-    a.show();
+    complex p1(2, 1);
+    complex p2(1, 1);
+    p1 += p2;
+
+    cout << "p1: " << p1.real() << endl;
+    cout << "p1: " << p1.imag() << endl;
+
+
+    return 0;
 }

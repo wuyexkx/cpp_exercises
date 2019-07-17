@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/main.cpp
+iostream
+-
+operator_overloading.h
+/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/operator_overloading.h
+
