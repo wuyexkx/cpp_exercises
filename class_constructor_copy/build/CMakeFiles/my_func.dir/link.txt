@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmy_func.a  CMakeFiles/my_func.dir/src/operator_overloading.cpp.o
-/usr/bin/ranlib libmy_func.a

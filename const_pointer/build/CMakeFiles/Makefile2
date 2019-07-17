@@ -44,22 +44,20 @@ RM = /usr/cmake-3.15.0-rc3-Linux-x86_64/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/wuyexkx/cpp/cpp_exercises/class_constructor_copy
+CMAKE_SOURCE_DIR = /home/wuyexkx/cpp/cpp_exercises/const_pointer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build
+CMAKE_BINARY_DIR = /home/wuyexkx/cpp/cpp_exercises/const_pointer/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/my_func.dir/all
 all: CMakeFiles/main.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
-clean: CMakeFiles/my_func.dir/clean
 clean: CMakeFiles/main.dir/clean
 
 .PHONY : clean
@@ -70,47 +68,20 @@ preinstall:
 .PHONY : preinstall
 
 #=============================================================================
-# Target rules for target CMakeFiles/my_func.dir
-
-# All Build rule for target.
-CMakeFiles/my_func.dir/all:
-	$(MAKE) -f CMakeFiles/my_func.dir/build.make CMakeFiles/my_func.dir/depend
-	$(MAKE) -f CMakeFiles/my_func.dir/build.make CMakeFiles/my_func.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build/CMakeFiles --progress-num=3,4 "Built target my_func"
-.PHONY : CMakeFiles/my_func.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/my_func.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/my_func.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build/CMakeFiles 0
-.PHONY : CMakeFiles/my_func.dir/rule
-
-# Convenience name for target.
-my_func: CMakeFiles/my_func.dir/rule
-
-.PHONY : my_func
-
-# clean rule for target.
-CMakeFiles/my_func.dir/clean:
-	$(MAKE) -f CMakeFiles/my_func.dir/build.make CMakeFiles/my_func.dir/clean
-.PHONY : CMakeFiles/my_func.dir/clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/main.dir
 
 # All Build rule for target.
-CMakeFiles/main.dir/all: CMakeFiles/my_func.dir/all
+CMakeFiles/main.dir/all:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build/CMakeFiles --progress-num=1,2 "Built target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wuyexkx/cpp/cpp_exercises/const_pointer/build/CMakeFiles --progress-num=1,2 "Built target main"
 .PHONY : CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wuyexkx/cpp/cpp_exercises/const_pointer/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wuyexkx/cpp/cpp_exercises/const_pointer/build/CMakeFiles 0
 .PHONY : CMakeFiles/main.dir/rule
 
 # Convenience name for target.

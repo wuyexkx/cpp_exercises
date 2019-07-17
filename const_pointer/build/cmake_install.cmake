@@ -1,4 +1,4 @@
-# Install script for directory: /home/wuyexkx/cpp/cpp_exercises/class_constructor_copy
+# Install script for directory: /home/wuyexkx/cpp/cpp_exercises/const_pointer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/wuyexkx/cpp/cpp_exercises/class_constructor_copy/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/wuyexkx/cpp/cpp_exercises/const_pointer/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
