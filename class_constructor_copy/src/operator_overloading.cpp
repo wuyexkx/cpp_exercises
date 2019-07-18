@@ -1,7 +1,11 @@
-#include <iostream>
 #include "operator_overloading.h"
 
 using namespace std;
 
-// operator-overloading-1 (成员函数中)
+
+void complex::show_complex(string name)
+{
+    cout << name << ": (" << this->re << " " << this->im << "i)\n";
+}
+
 

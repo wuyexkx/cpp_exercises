@@ -7,18 +7,24 @@ using namespace std;
 int main()
 {
     complex p1(2, 1);
-
-    cout << "p1.real: " << p1.real() << endl;
-    cout << "p1.imag: " << p1.imag() << endl;
-
+    p1.show_complex("p1");
     complex p2(1, 1);
-    complex p3 = p1 + 1;
-    complex p4 = 1 + p1;
+    p2.show_complex("p2");
 
-    cout << "p3.real: " << p3.real() << endl;
-    cout << "p3.imag: " << p3.imag() << endl;
-    cout << "p4.real: " << p4.real() << endl;
-    cout << "p4.imag: " << p4.imag() << endl;
+    complex p3 = p1 + 1;
+    p3.show_complex("p3");
+    complex p4 = 1 + p1;
+    p4.show_complex("p4");
+
+    p3 = +p4;
+    p3.show_complex("p3");
+
+    cout << (p3 == p4) << endl;
+    complex p5(1);
+    cout << (p5 == 1) << endl;
+    cout << (2 == p5) << endl;
+
+    cout << p4 << p1;
 
     return 0;
 }

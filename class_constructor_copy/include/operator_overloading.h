@@ -1,6 +1,10 @@
 #ifndef __COMPLEX__
 #define __COMPLEX__
 
+#include <iostream>
+#include <string>
+using namespace std;
+
 // 前置声明,防止类的深度耦合导致的相互编译不通过
 // class complex;
 
@@ -13,6 +17,7 @@ public:
     complex (double r = 0, double i = 0)
     : re(r), im(i)
     { }
+
     // 函数声明
     // 重载操作赋，一个complex对象 使用+= 可以加上另一个复数 值返回给本对象
     // 参数为const，不希望改变它
@@ -20,6 +25,7 @@ public:
     complex& operator -= (const complex&);
     double real() const { return re; }
     double imag() const { return im; }
+    void show_complex(string name);
 
 private:
     double re, im;  
@@ -66,6 +72,7 @@ complex::operator -= (const complex& r)
 
 
 //====================2. 操作赋重载-2，非成员函数===========================
+// 返回复数的实虚部
 inline double real(const complex& x)
 {
     return x.real();
@@ -74,27 +81,88 @@ inline double imag(const complex& x)
 {
     return x.imag();
 }
+// 共轭复数
+inline complex
+conj(const complex& x)
+{
+    return complex(x.real(), -x.imag());
+}
 
+// 重载 加法运算符，有两个操作对象 return = x + y
 inline complex
 operator + (const complex& x, const complex& y)
 {
     return complex (x.real() + y.real(),
                     x.imag() + y.imag());
 }
+// return = x + 1.0
 inline complex
 operator + (const complex& x, double r)
 {
     return complex(x.real() + r, x.imag());
 }
+// return = 1.0 + x
 inline complex
 operator + (double r, const complex& x)
 {
     return complex(r + x.real(), x.imag());
 }
 
+// 重载 正号   return = +x
+// inline complex& 如果返回引用，参数中的const将被去掉，编译不通过
+inline complex
+operator + (const complex& x)
+{
+    return x;
+}
+// 重载 负号  return = -x
+inline complex 
+operator - (const complex& x)
+{
+    return complex(-x.real(), -x.imag());
+}
+
+// 重载 ==   (x == y)
+inline bool
+operator == (const complex& x, const complex& y)
+{
+    return x.real() == y.real() 
+        && x.imag() == y.imag();
+}
+// 重载 ==   (x == 1)
+inline bool
+operator == (const complex& x, double i)
+{
+    return x.real() == i
+        && x.imag() == 0;
+}
+// 重载 ==   (1 == y)
+inline bool
+operator == (double i, const complex& x)
+{
+    return i == x.real()
+        && 0 == x.imag();
+}
+
+// 重载 << 此符号只能在global函数中重载
+// cout << c;希望输出c的复数形式  （cout实参，os形参）
+// 参数：第一参数和cout一个类型 都是ostream的对象，第二参数为一个复数
+//      不能const。const ostream& os说明os不可变，但os作为输出接收者 每次<<都在改变os
+// 返回值： 返回值可以为空,因为一次输出之后可以不用在管
+//         但若 cout << c1 << c2;出错。 << c返回值为空。 （cout实参，os形参）
+inline ostream&
+operator << (ostream& os, const complex& x)
+{
+    return os << "(" << real(x) << ", " << imag(x) << ")\n";
+}
+// inline void
+// operator << (ostream& os, const complex& x)
+// {
+//     os << "(" << real(x) << ", " << imag(x) << ")\n";
+// }
+
 
 #endif
 
 // https://bbs.csdn.net/topics/240026824
-
 
