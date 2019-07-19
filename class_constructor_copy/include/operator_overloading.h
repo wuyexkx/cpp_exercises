@@ -20,7 +20,7 @@ public:
 
     // 函数声明
     // 重载操作赋，一个complex对象 使用+= 可以加上另一个复数 值返回给本对象
-    // 参数为const，不希望改变它
+    // 参数为const，不希望改变数据
     complex& operator += (const complex&);
     complex& operator -= (const complex&);
     double real() const { return re; }
@@ -31,7 +31,8 @@ private:
     double re, im;  
 
 // 声明友元，可以使用private数据
-// 第一个参数为complex指针，在
+// 第一个参数为complex指针，
+// 同一对象互为友元，可以访问private
 friend complex& __doapl (complex* , const complex&);
 friend complex& __doamns (complex* , const complex&);
 
@@ -55,7 +56,7 @@ __doamns (complex *ths, const complex& r)
     ths->im -= r.im;
     return *ths;
 }
-// 定义 重载操作符函数
+// 定义 重载操作符函数 += 右边不动，因为为成员函数，左边作为隐藏参数this传入
 // 内敛函数在.h文件中定义。参数为一个complex对象
 inline complex&
 complex::operator += (const complex& r)
@@ -92,6 +93,7 @@ conj(const complex& x)
 inline complex
 operator + (const complex& x, const complex& y)
 {
+    // 返回临时对象
     return complex (x.real() + y.real(),
                     x.imag() + y.imag());
 }
@@ -144,7 +146,7 @@ operator == (double i, const complex& x)
         && 0 == x.imag();
 }
 
-// 重载 << 此符号只能在global函数中重载
+// 重载 << 此符号只能在global函数中重载。操作符一定作用到左边。因为如果是成员函数，用法为cls << cout;
 // cout << c;希望输出c的复数形式  （cout实参，os形参）
 // 参数：第一参数和cout一个类型 都是ostream的对象，第二参数为一个复数
 //      不能const。const ostream& os说明os不可变，但os作为输出接收者 每次<<都在改变os
