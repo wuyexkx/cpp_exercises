@@ -53,10 +53,15 @@ int main()
     cout << "a: " << a << " b: " << b << endl;
 
     vector<int> nums{2, 4, 7, 1, 0, 3, 5, 8, 9, -2, -199, -5, 3, 45, 33, -21};
+    vector<int> nums1{2, 4, 7, 1, 0, 3, 5, 8, 9, -2, -199, -5, 3, 45, 33, -21};
 
-
-    selectSort(nums);
+    cout << "\nbubbleSort: \n";
+    bubbleSort(nums);
     for(int i=0; i<nums.size(); i++) cout << nums[i] << " ";
+
+    cout << "\nselectSort: ";
+    selectSort(nums1);
+    for(int i=0; i<nums1.size(); i++) cout << nums1[i] << " ";
 
     return 0;
 }
