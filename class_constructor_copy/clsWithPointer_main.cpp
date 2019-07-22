@@ -11,11 +11,11 @@ int main()
 
     String s2("Hello");
     
-    // // 拷贝构造
+    // 拷贝构造
     String s3(s1);
     cout << s3 << endl;
 
-    // // 拷贝赋值
+    // 拷贝赋值
     s3 = s2; 
     cout << s3 << endl;
  
