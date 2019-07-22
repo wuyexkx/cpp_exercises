@@ -9,6 +9,9 @@ include_directories(./include)
 add_library(my_func ${SRC_LIST})
 
 
-add_executable(main main.cpp)
-target_link_libraries(main my_func)
+# add_executable(clsWithoutPointer_main clsWithoutPointer_main.cpp)
+# target_link_libraries(clsWithoutPointer_main my_func)
+
+add_executable(clsWithPointer_main clsWithPointer_main.cpp)
+target_link_libraries(clsWithPointer_main my_func)
 
