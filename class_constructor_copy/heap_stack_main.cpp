@@ -47,9 +47,45 @@
  */
 
 
+// class的static类型
+// static数据，
+//      不属于对象私有。创建多个对象但static只创建一次。对象可以修改它。
+//      由Account创建的所有对象共用static数据，一改全改
+//      ex：银行账户，可以创建多个客户，但利率都一样的，利率可以设计成static类型。
+// 
+// static函数，
+// 没有隐形参数 this指针。所以只能处理static的数据。而成员函数默认包含this,调用数据时没写this编译器会自动加上。
+// static属于类和成员，可以通过两种方法调用：
+//                  1.通过类名调用 Account::set_rate(); 
+//                  2.通过对象调用 Account a; a.set_rate(); 
+
+class Account
+{
+public:
+    static double m_rate; // 声明类里有一个变量m_rate为static类型, 脱离对象，只在对象中声明
+    static void set_rate(const double& x) { m_rate = x; }
+    void show_rate() { cout << "Account rate: " << m_rate << endl;}
+private:
+    int balance;
+};
+//  static数据脱离对象存在，只在对象中声明静态数据。所以需要在类外加上定义，可以不赋初值。
+// 定义，使变量获得内存的操作叫定义
+// static数据不属于对象
+double Account::m_rate = 8.0; 
+
+
 int main()
 {
-    
+    Account::set_rate(5.0); // className::staticFunction
+    Account::m_rate = 4;    // objName::staticData
+    cout << Account::m_rate << endl;
+    Account a;
+    a.show_rate(); // objName.staticFunction
+    a.m_rate = 1;  // objName.staticData
+    a.show_rate();
+    Account aa;
+    aa.show_rate();
+
     return 0;
 }
 
