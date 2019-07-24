@@ -18,5 +18,8 @@ add_library(my_func ${SRC_LIST})
 # add_executable(heap_stack_main heap_stack_main.cpp)
 # target_link_libraries(heap_stack_main my_func)
 
-add_executable(singleton singleton.cpp)
-target_link_libraries(singleton my_func)
+# add_executable(singleton singleton.cpp)
+# target_link_libraries(singleton my_func)
+
+
+add_executable(template_main template_main.cpp)
