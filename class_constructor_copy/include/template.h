@@ -54,7 +54,7 @@ private:
     int _w, _h, _weight;
 };
 // -------------------2.函数模板-----------------------
-//  函数模板，在使用时，编译器会对 函数模板 进行 参数推导
+//  函数模板，在使用时，编译器会对 函数模板 进行 参数推导(argument deduction)
 //  1. T& min(const T& a, const T& b)
 //       error: call of overloaded 'min(stone&, stone&)' is ambiguous(含糊不清)
 //       solution：因为使用了using namespace std; std包含min
@@ -66,6 +66,8 @@ private:
 template<class T>
 const T& mini(const T& a, const T& b)
 {
+    // 两个stone比较大小，需要在stone类中进行操作符重载
+    // 各司其职，责任分明，c++标准库algorithm中大量使用函数模板
     return a < b ? a : b;
 }
 

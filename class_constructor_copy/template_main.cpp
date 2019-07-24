@@ -15,7 +15,7 @@ int main()
     // 函数模板
     stone s1(1,1,2), s2(2,2,5), s3;
     cout << "s3.get_weight: " << s3.get_weight() << endl;
-    // 使用时，编译器会对 函数模板 进行 参数推导
+    // 使用时，编译器会对 函数模板 进行 参数推导(argument deduction)
     // 参数推导结果T为stone，于是调用stone::operator<
     s3 = mini(s1, s2);
     cout << "s3.get_weight: " << s3.get_weight() << endl;
