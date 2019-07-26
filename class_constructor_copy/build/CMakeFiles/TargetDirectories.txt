@@ -1,3 +1,0 @@
-C:/cpp/class_constructor_copy/build/CMakeFiles/my_func.dir
-C:/cpp/class_constructor_copy/build/CMakeFiles/edit_cache.dir
-C:/cpp/class_constructor_copy/build/CMakeFiles/rebuild_cache.dir

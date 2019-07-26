@@ -1,2 +1,0 @@
-"C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/ar.exe" qc libmy_func.a  CMakeFiles/my_func.dir/src/clsWithPointerMember.cpp.obj CMakeFiles/my_func.dir/src/clsWithoutPointerMember.cpp.obj
-"C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/ranlib.exe" libmy_func.a
