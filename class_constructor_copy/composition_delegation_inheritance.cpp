@@ -64,6 +64,11 @@ friend class String;
 
 
 // -----------------------3.inheritance(继承)----------------------------
+// c++有三种继承方式：public  private  protected
+
+// public继承方式
+// 父类的数据是被完整的继承下来
+
 // 构造由内向外，
 // Derived::Derived(...) Base() {...};
 // Derived的构造函数首先调用Base的default构造函数，然后才执行自己。
@@ -75,5 +80,18 @@ friend class String;
 // Base class的析构函数必须是virtual，否则出现undefined behavior，
 // 当设计的类会被继承，必须设计其析构函数类型为virtual
 
+struct _List_node_base
+{
+    _List_node_base* _M_next;
+    _List_node_base* _M_prev;
+};
 
+// _List_node继承自_List_node_base
+// 父类的数据是被完整的继承下来，_List_node除了_M_data之外还有父类的两个指针数据
+template<typename _Tp>
+struct _List_node
+    : public _List_node_base
+{
+    _Tp _M_data;
+};
 
