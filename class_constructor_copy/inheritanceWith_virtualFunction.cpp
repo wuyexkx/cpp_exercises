@@ -26,26 +26,28 @@ class Ellipse: public Shape { };
 // 23个设计模式[OOD]之二 observer观察者模式, 多个观察者同时观察同一份数据
 // 例如三个不同窗口观察同一份数据
 
+// observer，
 class Observer
 {
-public:
+public: // 派生类都是 is a observer
     virtual void update(Subject* sub, int value) = 0;
 };
+// 数据，一份数据可以包含很多个observer
 class Subject
 {
     int m_value;
-    vector<Observer*> m_views;
+    vector<Observer*> m_views; // 由observer派生的子类对象都可以存放进来delegation的关系
 public:
-    void attach(Observer* obs)
+    void attach(Observer* obs) // 新加入的observer登记
     {
-        m_views.push_back(obs);
+        m_views.push_back(obs); 
     }
     void set_val(int value)
     {
         m_value = value;
         notify();
     }
-    void notify()
+    void notify() // 数据遍历通知observer，通知observer干什么双方要协商好，这里是更新数据
     {
         for(int i = 0; i < m_views.size(); ++i)
         {
@@ -53,5 +55,4 @@ public:
         }
     }
 };
-
 
