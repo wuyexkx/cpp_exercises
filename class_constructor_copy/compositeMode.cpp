@@ -32,3 +32,9 @@ public:
         c.push_back(elem);
     }
 };
+
+
+// 原型模式 prototype pattern
+// 在其他模式也可能出现这种情况：现在要创建未来的class
+// prototype，未来创建的东西能被框架看到
+
