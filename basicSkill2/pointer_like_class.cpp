@@ -62,7 +62,7 @@ struct Foo
 template<typename T>
 struct __list_node
 {
-    void* prev;
+    void* prev; 
     void* next;
     T data;
 };
