@@ -8,7 +8,8 @@ include_directories(./include)
 
 # add_library(my_func ${SRC_LIST})
 
-add_executable(conversionFunction conversionFunction.cpp)
+# add_executable(conversionFunction conversionFunction.cpp)
 # target_link_libraries(singleton my_func)
 
+add_executable(pointer_like_class pointer_like_class.cpp)
 
