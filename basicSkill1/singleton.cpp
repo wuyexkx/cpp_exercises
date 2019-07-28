@@ -3,13 +3,14 @@
 using namespace std;
 
 // 单例模式,所使用的类只希望创建一个对象
+// 将构造函数、拷贝构造放于private中，外部无法调用private数据或函数
 
 //------------第一种实现方法，早已存在（饿汉模式）---------------
 class A
 {
 public:
     static A& getInstance() { return a; }   // 始终返回返回唯一A的对象a
-    void f() { cout << "A::f()" << endl; } // 外部调用f，A::getInstance().f();
+    void f() { cout << "A::f()" << endl; }  // 外部调用f，A::getInstance().f();
 // 构造函数和拷贝构造函数放在private中，外界无法使用，只能在类内部使用，所以外界无法创建对象。
 // 只能通过内部创建一个唯一对象返回出去。
 private:
