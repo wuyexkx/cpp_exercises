@@ -15,5 +15,5 @@ include_directories(./include)
 
 # add_executable(function_like_class function_like_class.cpp)
 
-add_executable(member_template member_template.cpp)
+add_executable(specialization specialization.cpp)
 
