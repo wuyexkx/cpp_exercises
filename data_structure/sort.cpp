@@ -39,7 +39,7 @@ void selectSort(vector<int>& nums)
         swap(nums[i], nums[index]); // 每次内循环完成 找到最小的数，交换一下
     }
 }
-// -------------插入排序,新出来的项插入已排好的序列----------------
+// ----------插入排序,低级排序中最快,新出来的项插入已排好的序列-------------
  void insertSort(vector<int>& nums)
  {
     int in, out;
