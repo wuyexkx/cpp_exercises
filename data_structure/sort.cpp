@@ -81,7 +81,7 @@ void quickSort(vector<int>& nums, const int left, const int right)
     nums[l] = pivot; // 将轴至于左边
 
     // 从l处划分为 左右两部分 分别递归
-    quickSort(nums, left, l - 1); 
+    quickSort(nums, left, l - 1); // 左右都逐渐向l靠拢
     quickSort(nums, l + 1, right); 
 }
 
