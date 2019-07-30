@@ -11,5 +11,9 @@ include_directories(./include)
 # add_executable(conversionFunction conversionFunction.cpp)
 # target_link_libraries(singleton my_func)
 
-add_executable(pointer_like_class pointer_like_class.cpp)
+# add_executable(pointer_like_class pointer_like_class.cpp)
+
+# add_executable(function_like_class function_like_class.cpp)
+
+add_executable(member_template member_template.cpp)
 
