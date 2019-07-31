@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+#include <algorithm>
 using namespace std;
 
 // 三种低级排序算法
@@ -58,10 +58,10 @@ void selectSort(vector<int>& nums)
 
 
 // 高级排序算法
-// ---------快速排序,最流行最快,用递归-------------
+// ---------1.快速排序,最流行最快,用递归-------------
 // 1.选定左边的数为轴
 // 2.从右往前与轴比较,当找到一个或者没有找到<轴的数的时候,开始从左往右查找
-// 3.
+// 3.重点是划分为两部分的方法
 void quickSort(vector<int>& nums, const int left, const int right)
 {
     if(left >= right) return; // 递归结束条件
@@ -81,10 +81,36 @@ void quickSort(vector<int>& nums, const int left, const int right)
     nums[l] = pivot; // 将轴至于左边
 
     // 从l处划分为 左右两部分 分别递归
-    quickSort(nums, left, l - 1); // 左右都逐渐向l靠拢
+    quickSort(nums, left, l - 1); // 由于l 左右都逐渐向两端走
     quickSort(nums, l + 1, right); 
 }
+// -----------2. 归并排序,速度与快速排序一样-------------
+// 归并: 先递归拆分为单项(有序), 再依次合并相邻两组 为有序. 这样通过先递归的分解数列，再合并数列就完毕了归并排序。
+// 将两个有序数列合并,第一个数列为a[st ~ mid],第二个数列为a[mid+1 ~ end], 不一定对称,合并结果保存在a[st ~ end]
+void merge(int a[],int st,int end,int mid)
+{
+    int buf[end-st+1], i, j, iRst=0; // buf缓存比较的结果,最后赋值给a的相应项,iRst暂存需要的索引
+    
+    i = st;                 // i负责左边有序数列的索引
+    j = mid + 1;            // j负责右边有序数列的索引
+    while(i<=mid && j<=end) // 两个数列都没有比较完,继续比较 直到其中一个数列的项全部保存
+    {
+        if(a[i] <= a[j]) buf[iRst++] = a[i++];   // 左右比较取小的暂存, 
+        else buf[iRst++] = a[j++];               // 暂存索引+1, 左右索引对应+1,不对应的不变,下次还需要比较
+    }
+    while(i <= mid) buf[iRst++] = a[i++];        // 因为左右各项是逐个比较的, 一定有一个已经排完,另一个末尾还剩下一些
+    while(j <= end) buf[iRst++] = a[j++];        // 所以需要对应补充进去
 
+    for(int k=st; k<=end; k++) a[k] = buf[k-st]; // 将排好的暂存赋值给a对应的项
+}
+void mergeSort(int a[], const int l, const int r)
+{
+    if(l >= r) return ;     // 递归结束条件
+	int mid = (l + r) / 2;  // 计算出中间索引直
+	mergeSort(a, l, mid);   // 
+	mergeSort(a, mid+1, r); // 
+	merge(a, l, r, mid);    // 再将二个有序数列合并	
+} 
 
 int main()
 {
@@ -92,7 +118,6 @@ int main()
     vector<int> nums1{3, 3, 7, -5, 0, 3, 5, 33, 9, -2, -199, -5, 3, 45, 33, -21};
     vector<int> nums2{3, 3, 7, -5, 0, 3, 5, 33, 9, -2, -199, -5, 3, 45, 33, -21};
     vector<int> nums3{3, 3, 7, -5, 0, 3, 5, 33, 9, -2, -199, -5, 3, 45, 33, -21};
-
 
     cout << "\nbubbleSort: ";
     bubbleSort(nums);
@@ -111,5 +136,10 @@ int main()
     quickSort(nums3, 0, nums.size()-1);
     for(int i=0; i<nums3.size(); i++) cout << nums3[i] << " ";
 
+    cout << "\n mergeSort: ";
+    int nums4[10] = {3,2,2,4,5,1,9,3,0,1};
+    mergeSort(nums4, 0, 9);
+    for(int i=0; i < 10; i++) cout << nums4[i] << " ";
+    
     return 0;
 }
