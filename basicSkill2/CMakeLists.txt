@@ -21,4 +21,7 @@ include_directories(./include)
 
 # add_executable(template_template_parameter template_template_parameter.cpp)
 
-add_executable(variadic_templates variadic_templates.cpp)
+# add_executable(variadic_templates variadic_templates.cpp)
+
+add_executable(auto_use auto_use.cpp)
+
