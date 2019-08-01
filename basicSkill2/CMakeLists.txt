@@ -23,5 +23,9 @@ include_directories(./include)
 
 # add_executable(variadic_templates variadic_templates.cpp)
 
-add_executable(auto_use auto_use.cpp)
+# add_executable(auto_use auto_use.cpp)
+
+# add_executable(for_use for_use.cpp)
+
+add_executable(obj_model obj_model.cpp)
 
