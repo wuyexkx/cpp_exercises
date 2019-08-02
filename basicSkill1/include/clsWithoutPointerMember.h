@@ -20,11 +20,11 @@ public:
 
     // 函数声明
     // 重载操作赋，一个complex对象 使用+= 可以加上另一个复数 值返回给本对象
-    // 参数为const，不希望改变数据
+    // 参数为const，不希望改变传入的参数
     complex& operator += (const complex&);
     complex& operator -= (const complex&);
     double real() const { return re; } // 此const为,修饰成员函数不改变class的data,只读不改. 一般全局函数const不能放在这个位置
-    double imag() const { return im; }
+    double imag() const { return im; } // 当const obj调用非const成员函数时会出错, const A a; a.print();
     void show_complex(string name);
 
 private:
@@ -164,8 +164,8 @@ operator << (ostream& os, const complex& x)
 // }
 
 
-
 #endif
 
+// 关于inline的解答 #15
 // https://bbs.csdn.net/topics/240026824
 
