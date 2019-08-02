@@ -23,7 +23,7 @@ public:
     // 参数为const，不希望改变数据
     complex& operator += (const complex&);
     complex& operator -= (const complex&);
-    double real() const { return re; }
+    double real() const { return re; } // 此const为,修饰成员函数不改变class的data,只读不改. 一般全局函数const不能放在这个位置
     double imag() const { return im; }
     void show_complex(string name);
 
