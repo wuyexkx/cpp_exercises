@@ -5,6 +5,7 @@ project(class_constructor_copy)
 
 aux_source_directory(./src SRC_LIST)
 include_directories(./include)
+message(${SRC_LIST})
 
 add_library(my_func ${SRC_LIST})
 

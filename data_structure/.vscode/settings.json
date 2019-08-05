@@ -2,6 +2,11 @@
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
     "files.associations": {
         "*.tcc": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp"
     }
 }
