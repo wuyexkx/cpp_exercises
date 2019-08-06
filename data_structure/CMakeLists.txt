@@ -6,10 +6,10 @@ include_directories(./include)
 aux_source_directory(./src SRC_LIST)
 
 add_library(my_func ${SRC_LIST})
-add_executable(sequenceStack_main sequenceStack_main.cpp)
-target_link_libraries(sequenceStack_main my_func)
-
-
+# add_executable(sequenceStack_main sequenceStack_main.cpp)
+# target_link_libraries(sequenceStack_main my_func)
+add_executable(sequenceQueue_main sequenceQueue_main.cpp)
+target_link_libraries(sequenceQueue_main my_func)
 
 # add_executable(sort sort.cpp)
 # add_executable(search search.cpp)
@@ -17,3 +17,5 @@ target_link_libraries(sequenceStack_main my_func)
 # add_executable(Recursion_binarySearch Recursion_binarySearch.cpp)
 # add_executable(permutation permutation.cpp)
 # add_executable(removeDuplicates removeDuplicates.cpp)
+
+# add_executable(stack1 stack1.cpp)

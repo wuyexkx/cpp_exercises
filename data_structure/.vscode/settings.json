@@ -7,6 +7,7 @@
         "initializer_list": "cpp",
         "utility": "cpp",
         "chrono": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "ostream": "cpp"
     }
 }
