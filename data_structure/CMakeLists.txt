@@ -18,4 +18,5 @@ add_library(my_func ${SRC_LIST})
 # add_executable(permutation permutation.cpp)
 # add_executable(removeDuplicates removeDuplicates.cpp)
 
-add_executable(list_basis list_basis.cpp)
+# add_executable(list_basis list_basis.cpp)
+add_executable(list_classNesting list_classNesting.cpp)
