@@ -22,5 +22,13 @@ int main()
     L.Invert();
     L.show();
 
+    List<int> L1;
+    L1.Insert(10);
+    L1.Insert(11);
+    L1.Insert(12);
+    L1.show();
+    L.Concatenate(L1);
+    L.show();
+
     return 0;
 }

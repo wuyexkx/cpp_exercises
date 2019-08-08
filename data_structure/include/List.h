@@ -58,18 +58,19 @@ void List<T>::Delete(const T& item)
 }
 
 template<class T>
-void List<T>::Invert() // 反转链表
+void List<T>::Invert() // 反转链表  // 0->1->2->3   1->2->3->0  2->3->1->0  3->2->1->0
 {
     ListNode<T>* p = first; // 指向首
     ListNode<T>* q = 0;     // 指向尾 ,首次创建的那个节点link为0
     while(p)
     {
-        ListNode<T>* r = q;
-        q = p; 
-        p = p->link;
-        q->link = r;
+        ListNode<T>* prevNode = q; 
+
+        q = p;       // q为 上一节点
+        p = p->link; // p指向下一个节点
+        q->link = prevNode; // 为上一个节点的指针 赋值 
     }
-    first = q;
+    first = q; // 到原来最后一个节点时 让它为first
 }
 
 template<class T>
@@ -79,8 +80,8 @@ void List<T>::Concatenate(const List<T>& b)
     if(b.first) // 如果第一个不为空 并且 第二个链表不为空
     {
         ListNode<T>* buttom = first; 
-        while(buttom) buttom = buttom->link; // 找到第一个链表的尾
-        buttom = b.first;
+        while(buttom->link) buttom = buttom->link; // 找到第一个链表的尾
+        buttom->link = b.first; // 找到之后重新连接到 第二个链表的头
     }
 }
 template<class T>
