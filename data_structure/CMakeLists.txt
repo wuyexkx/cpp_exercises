@@ -19,4 +19,7 @@ add_library(my_func ${SRC_LIST})
 # add_executable(removeDuplicates removeDuplicates.cpp)
 
 # add_executable(list_basis list_basis.cpp)
-add_executable(list_classNesting list_classNesting.cpp)
+# add_executable(list_classNesting list_classNesting.cpp)
+
+add_executable(List_main List_main.cpp)
+target_link_libraries(List_main my_func)
