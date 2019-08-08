@@ -6,7 +6,7 @@ class List; // 前置声明
 class Node  // 单向链表的一个节点,包含数据和一个link 
 {
 public:;
-friend class List;
+friend class List; // 在定义List的成员函数中,需要访问Node对象的private数据,所以声明为友元
 private:
     int data;
     Node* link; // Node指针,用于存放同类型的下一个节点 (可以通过这个指针 找到 此节点的数据和下一个节点)
