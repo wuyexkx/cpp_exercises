@@ -23,3 +23,8 @@ add_library(my_func ${SRC_LIST})
 
 add_executable(List_main List_main.cpp)
 target_link_libraries(List_main my_func)
+
+# add_executable(list_test_main list_test_main.cpp)
+# target_link_libraries(list_test_main my_func)
+
+# add_executable(STL_list_main STL_list_main.cpp)

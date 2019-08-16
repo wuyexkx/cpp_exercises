@@ -1,14 +1,17 @@
 #ifndef __LIST_H
 #define __LIST_H
 
-
+// 前置声明
 template<class T>
 class List;
+template<class T>
+class listIterator;
 
 template<class T>
 class ListNode
 {
 friend class List<T>;
+friend class listIterator<T>;
 public:
     ListNode(const T& item) // 构造函数 初始化data
     : data(item) { };
@@ -20,6 +23,7 @@ private:
 template<class T>
 class List
 {
+friend class listIterator<T>;
 public:
     List(): first(0) { }; // 初始值为0 ,该节点无后续节点
     void Insert(const T& item);
@@ -95,6 +99,50 @@ void List<T>::show() const
         current = current->link; // 重新赋值下一个节点的指针
     }
     std::cout << std::endl;
+}
+
+template<class T>
+class listIterator // 简单的迭代器
+{
+public:
+    listIterator(const List<T>& l) // 构造函数
+    : list(l), current(l.first) { };
+    bool NotNull();
+    bool NextNotNull();
+    T* First();
+    T* Next();
+private:
+    const List<T>& list;
+    ListNode<T>* current;
+};
+
+template<class T>
+bool listIterator<T>::NotNull()
+{
+    if(current) return true; // 如果不为空列表,返回true
+    else return false;
+}
+template<class T>
+bool listIterator<T>::NextNotNull()
+{
+    if(current->link) return true; // 如果下一个节点不为空,返回true
+    else return false;
+}
+template<class T>
+T* listIterator<T>::First() // 返回首个节点数据 的地址
+{
+    return &list.first->data;
+}
+template<class T>
+T* listIterator<T>::Next() // 返回下个节点数据 的地址, 并将当前节点指针 指向下一个节点
+{
+    if(current)
+    {
+        current = current->link;
+        return &current->data;
+    }
+    return 0;
+    
 }
 
 

@@ -30,5 +30,19 @@ int main()
     L.Concatenate(L1);
     L.show();
 
+
+    cout << "------------ourselves iterator----------------\n";
+    listIterator<int> li(L);
+    if(li.NotNull())
+    {
+        cout << *li.First();
+        while(li.NextNotNull())
+        {
+            cout  << " -> " << *li.Next();
+        }
+        cout << endl;
+    }
+
     return 0;
 }
+
