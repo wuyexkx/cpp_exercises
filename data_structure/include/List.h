@@ -131,7 +131,8 @@ bool listIterator<T>::NextNotNull()
 template<class T>
 T* listIterator<T>::First() // 返回首个节点数据 的地址
 {
-    return &list.first->data;
+    if(list.first) return &list.first->data;
+    else return 0;
 }
 template<class T>
 T* listIterator<T>::Next() // 返回下个节点数据 的地址, 并将当前节点指针 指向下一个节点
