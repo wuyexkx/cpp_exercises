@@ -5,7 +5,7 @@ project(data_structure)
 include_directories(./include)
 aux_source_directory(./src SRC_LIST)
 
-add_library(my_func ${SRC_LIST})
+add_library(myInc ${SRC_LIST})
 # add_executable(sequenceStack_main sequenceStack_main.cpp)
 # target_link_libraries(sequenceStack_main my_func)
 # add_executable(sequenceQueue_main sequenceQueue_main.cpp)
@@ -21,10 +21,15 @@ add_library(my_func ${SRC_LIST})
 # add_executable(list_basis list_basis.cpp)
 # add_executable(list_classNesting list_classNesting.cpp)
 
-add_executable(List_main List_main.cpp)
-target_link_libraries(List_main my_func)
+# add_executable(List_main List_main.cpp)
+# target_link_libraries(List_main my_func)
 
 # add_executable(list_test_main list_test_main.cpp)
 # target_link_libraries(list_test_main my_func)
 
-# add_executable(STL_list_main STL_list_main.cpp)
+add_executable(STL_list_main STL_list_main.cpp)
+add_executable(loop_list_main loop_list_main.cpp)
+target_link_libraries(loop_list_main myInc)
+
+# add_executable(base_derived_call_virtual base_derived_call_virtual.cpp)
+
