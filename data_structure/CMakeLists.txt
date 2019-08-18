@@ -27,9 +27,11 @@ add_library(myInc ${SRC_LIST})
 # add_executable(list_test_main list_test_main.cpp)
 # target_link_libraries(list_test_main my_func)
 
-add_executable(STL_list_main STL_list_main.cpp)
-add_executable(loop_list_main loop_list_main.cpp)
-target_link_libraries(loop_list_main myInc)
+# add_executable(STL_list_main STL_list_main.cpp)
+# add_executable(loop_list_main loop_list_main.cpp)
+# target_link_libraries(loop_list_main myInc)
 
 # add_executable(base_derived_call_virtual base_derived_call_virtual.cpp)
 
+add_executable(double_list_main double_list_main.cpp)
+target_link_libraries(double_list_main myInc)
