@@ -29,7 +29,7 @@ public:
     doubleList() // 构造函数, 初始链表第一个节点 数据为9999. llink和rlink都指向first
     : first(new Node<T>) 
     { first->llink = first->rlink = first; }
-    Node<T>* First() { return first; } // 通过成员函数获取指针
+    Node<T>* First() const { return first; } // 通过成员函数获取指针
     void Insert(Node<T>*, Node<T>*);
     void Delete(Node<T>* xNode);
 
