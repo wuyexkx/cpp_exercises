@@ -36,5 +36,5 @@ add_library(myInc ${SRC_LIST})
 # add_executable(double_list_main double_list_main.cpp)
 # target_link_libraries(double_list_main myInc)
 
-add_executable(listStack_main listStack_main.cpp)
-target_link_libraries(listStack_main myInc)
+add_executable(listQueue_main listQueue_main.cpp)
+target_link_libraries(listQueue_main myInc)
