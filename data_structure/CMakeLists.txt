@@ -33,5 +33,8 @@ add_library(myInc ${SRC_LIST})
 
 # add_executable(base_derived_call_virtual base_derived_call_virtual.cpp)
 
-add_executable(double_list_main double_list_main.cpp)
-target_link_libraries(double_list_main myInc)
+# add_executable(double_list_main double_list_main.cpp)
+# target_link_libraries(double_list_main myInc)
+
+add_executable(listStack_main listStack_main.cpp)
+target_link_libraries(listStack_main myInc)
