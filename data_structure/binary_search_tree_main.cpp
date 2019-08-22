@@ -62,6 +62,23 @@ int main()
 
     cout << "   inOrder: ";  bst.InOrder();  cout << endl;
 
+// output:
+// position: 1  element: 5
+// position: 2  element: 4
+// position: 4  element: 2
+// position: 9  element: 3
+// position: 3  element: 6
+// ----------------------------
+// position: 1  element: 5
+// position: 2  element: 4
+// position: 4  element: 2
+// position: 9  element: 3
+// position: 3  element: 6
+
+// recursion result: 6
+
+//  iterator result: 2
+//    inOrder: 2 3 4 5 6 
 
     return 0;
 }
