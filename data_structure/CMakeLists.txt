@@ -39,4 +39,4 @@ add_library(myInc ${SRC_LIST})
 # add_executable(radixSort radixSort.cpp)
 # target_link_libraries(listQueue_main myInc)
 
-add_executable(binary_search_tree_main binary_search_tree_main.cpp)
+add_executable(max_heap_main.cpp max_heap_main.cpp)
