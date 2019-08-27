@@ -17,6 +17,32 @@ void print(const T& firstArg, const Types&... args) //  接收 任意类型 的 
     cout << firstArg << endl; // 输出第一个参数
     print(args...); // 递归, 第一次到这里会把参数分为 1个 和 一小包, 一直分到最后传入参数为空 去调用那个空参数函数
 }
+
+// 实现c语言版本的printf()
+// void printf(const char* s)
+// {
+//     while(*s)
+//     {
+//         if(*s == '%' && *(++s) != '%')
+//             throw std::runtime_error("invalid format string: missing arguments\n");
+//         cout << *s++;
+//     }
+// }
+template<typename T, typename... Args>
+void printf(const char* s, T value, Args... args)
+{
+    while(*s)
+    {
+        if(*s == '%' && *(++s) != '%' ) // ("%d%s%f\n", 2, "abcd", 3.14)
+        {
+            cout << value << " ";
+            printf(++s, args...);
+            return;
+        }
+        cout << *s++;
+    }
+    throw std::logic_error("extra arguments provided to printf()\n");    
+}
 // -----------------------------------------------------------------------
 
 
@@ -68,25 +94,25 @@ public:
     3. 在(2)的内部首先调用(4), 再调用(3)因为此时pack还剩下一个参数
 */
 
-// 2. 用于类 (tuple)
-// 递归继承  构建 任意类型 任意个数 数据的容器
-template<typename... Values> class tuple;
-template<>
-class tuple<> { }; // 递归终止条件
-template<typename Head, typename... Tail>  // ***
-class tuple<Head, Tail...>                 // ***
-: private tuple<Tail...> // ***继承后面Tail...的tuple (可以很方便的完成 recursion inheritance)
-{
-    typedef tuple<Tail...> inherited;
-public:
-    tuple() { }
-    tuple(Head v, Tail... vtail) { }
+// // 2. 用于类 (tuple)
+// // 递归继承  构建 任意类型 任意个数 数据的容器
+// template<typename... Values> class tuple;
+// template<>
+// class tuple<> { }; // 递归终止条件
+// template<typename Head, typename... Tail>  // ***
+// class tuple<Head, Tail...>                 // ***
+// : private tuple<Tail...> // ***继承后面Tail...的tuple (可以很方便的完成 recursion inheritance)
+// {
+//     typedef tuple<Tail...> inherited;
+// public:
+//     tuple() { }
+//     tuple(Head v, Tail... vtail) { }
 
-typename Head::type head() { return M_head; }
-inherited& tail() { return *this; }
-protected:
-    Head m_head;       // *** 递归继承, 递归生成protected数据,  tuple<int, float, string> t(4, 1.3, "niubi");
-};
+// typename Head::type head() { return M_head; }
+// inherited& tail() { return *this; }
+// protected:
+//     Head m_head;       // *** 递归继承, 递归生成protected数据,  tuple<int, float, string> t(4, 1.3, "niubi");
+// };
 
 
 int main()
@@ -97,6 +123,8 @@ int main()
     // hello!
     // 0000000000001111
     // 100
+
+    printf("%d%s%fd\n", 2, "abcd", 3.14);
 
     return 0;    
 }
