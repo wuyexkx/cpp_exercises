@@ -3,7 +3,7 @@
 #include <bitset>
 using namespace std;
 
-// 1. 用于函数 
+// 1. 用于函数 (print)
 // ...就是一个所谓的包
 // --------------------------这种写法必须并存-------------------------------
 // 如果不写这个无参数的函数,将报错,error: no matching function for call to ‘print()’
@@ -20,7 +20,7 @@ void print(const T& firstArg, const Types&... args) //  接收 任意类型 的 
 // -----------------------------------------------------------------------
 
 
-// 2. 用于类
+// 1. 用于函数 (hash_val)
 template<typename T>
 inline void hash_combine(size_t& seed, const T& val) // (4) 
 {
@@ -68,6 +68,27 @@ public:
     3. 在(2)的内部首先调用(4), 再调用(3)因为此时pack还剩下一个参数
 */
 
+// 2. 用于类 (tuple)
+// 递归继承  构建 任意类型 任意个数 数据的容器
+template<typename... Values> class tuple;
+template<>
+class tuple<> { }; // 递归终止条件
+template<typename Head, typename... Tail>  // ***
+class tuple<Head, Tail...>                 // ***
+: private tuple<Tail...> // ***继承后面Tail...的tuple (可以很方便的完成 recursion inheritance)
+{
+    typedef tuple<Tail...> inherited;
+public:
+    tuple() { }
+    tuple(Head v, Tail... vtail) { }
+
+typename Head::type head() { return M_head; }
+inherited& tail() { return *this; }
+protected:
+    Head m_head;       // *** 递归继承, 递归生成protected数据,  tuple<int, float, string> t(4, 1.3, "niubi");
+};
+
+
 int main()
 {
     print(7.5, "hello!", bitset<16>(15), 100); // bitset类一定重载了<<操作符
@@ -76,8 +97,6 @@ int main()
     // hello!
     // 0000000000001111
     // 100
-
-
 
     return 0;    
 }
