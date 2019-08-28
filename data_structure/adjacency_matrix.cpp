@@ -28,6 +28,11 @@ public:
     void addVertex(const char& v);                 // 主要是 使nVertex++
     void addEdge(const char& st, const char& end); // 添加顶点之间的关系
     void print() const;
+    ~Graph()
+    {
+        for(int i=0; i<nVertex; i++)
+            delete vertexTable[i]; // 顶点表里的数据是 new的Vertex指针, 需要一次释放
+    }
 private:
     Vertex* vertexTable[MAXVERTEX_NUMS]; // 可以不用这么麻烦
     bool adjMat[MAXVERTEX_NUMS][MAXVERTEX_NUMS]; // 邻接矩阵
@@ -36,7 +41,7 @@ private:
 
 void Graph::addVertex(const char& v)
 {
-    vertexTable[nVertex] = new Vertex(v);
+    vertexTable[nVertex] = new Vertex(v); 
     nVertex++;
 }
 void Graph::addEdge(const char& st, const char& end)
