@@ -24,7 +24,7 @@ public:
     : nVertex(0), vertexTable(new Vertex*[MAXVERTEX_NUMS]) // 初始化当前顶点个数 和 存放顶点的数组
     {
         for(int i=0; i<MAXVERTEX_NUMS; i++) // 初始化顶点状态
-            visitedV[i] = 0; 
+            visitedVtable[i] = 0; 
 
         for(int i=0; i<MAXVERTEX_NUMS; i++) // 初始化adjacency matrix
             for(int j=0; j<MAXVERTEX_NUMS; j++)
@@ -35,10 +35,10 @@ public:
     void addEdge(const Vertex& v1, const Vertex& v2);
     void printVertex() const;
     void printAdjMat() const; 
-    void printDFS(); // ***********8重点是printDFS()****************
+    void printDFS(); // ***********重点是printDFS()****************
 private:
     Vertex** vertexTable;                        // 存放顶点 
-    bool visitedV[MAXVERTEX_NUMS];               // 存放顶点是否被遍历的状态
+    bool visitedVtable[MAXVERTEX_NUMS];          // 存放顶点是否被遍历的状态
     bool adjMat[MAXVERTEX_NUMS][MAXVERTEX_NUMS]; // adjacency matrix
     int nVertex;                                 // 当前顶点个数 
 };
@@ -71,15 +71,15 @@ void Graph::printDFS()
 {
     auto vnextUnvisited = [&](const Vertex* v)->int // 返回顶点在vertexTable中的位置
     {
-        for(int i=0; i<nVertex; i++)                  // 搜索adjacency matrix的每一行
-            if(adjMat[v->data-65][i] && !visitedV[i]) // 如果给定顶点,在邻接表找到1 且 没被访问过
-                return vertexTable[i]->data - 65;     // 返回该顶点对应表中的位置
+        for(int i=0; i<nVertex; i++)                       // 搜索adjacency matrix的每一行
+            if(adjMat[v->data-65][i] && !visitedVtable[i]) // 如果给定顶点,在邻接表找到1 且 没被访问过
+                return i;                                  // 返回该顶点对应表中的位置
         return -1; // 如果没找到返回-1
     };
 
     stack<Vertex*> gStack;  // 用stack存放 遍历过的 顶点 
     int i = 0;              // 记录顶点在vertexTable中的索引
-    visitedV[i] = true;                  // 标记第一个顶点已被访问
+    visitedVtable[i] = true;             // 标记第一个顶点已被访问
     cout << vertexTable[i]->data << " "; // 输出
     gStack.push(vertexTable[i]);         // 压入起点
     while(!gStack.empty())
@@ -87,9 +87,9 @@ void Graph::printDFS()
         i = vnextUnvisited(gStack.top()); // 访问第下个顶点
         if(i >= 0) // 存在
         {
-            visitedV[i] = true;                  // 标记被访问
+            visitedVtable[i] = true;             // 标记被访问
             cout << vertexTable[i]->data << " "; // 输出
-            gStack.push(vertexTable[i]);         // 压入
+            gStack.push(vertexTable[i]);         // 访问过的顶点 都要压入stack
         }
         else // 没有下个顶点了
         {
@@ -98,10 +98,9 @@ void Graph::printDFS()
     }
     cout << endl;
     for(int j=0; j<nVertex; j++) // 状态表置零  可以多次搜索
-        visitedV[j] = false;
+        visitedVtable[j] = false;
 }
 // -----------------------------------------------------------------------
-
 
 int main()
 {
