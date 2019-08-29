@@ -84,6 +84,30 @@ void quickSort(vector<int>& nums, const int left, const int right)
     quickSort(nums, left, l - 1); // 由于l 左右都逐渐向两端走
     quickSort(nums, l + 1, right); 
 }
+// 快排分开写
+int partition(vector<int>& nums, const int left, const int right)
+{
+    int l = left, r = right;
+    int p = nums[left];
+    while(l < r)
+    {
+        while(l < r && nums[r] > p)  r--;
+        if(l < r) nums[l++] = nums[r];
+
+        while(l < r && nums[l] < p) l++;
+        if(l < r) nums[r--] = nums[l];
+    }
+    nums[l] = p;
+    return l;
+}
+void qs(vector<int>& nums, const int left, const int right)
+{
+    if(left >= right) return;
+    int l = partition(nums, left, right);
+    qs(nums, left, l-1);
+    qs(nums, l+1, right);
+}
+
 // -----------2. 归并排序,速度与快速排序一样-------------
 // 归并: 先递归拆分为单项(有序), 再依次合并相邻两组 为有序. 这样通过先递归的分解数列，再合并数列就完毕了归并排序。
 // 将两个有序数列合并,第一个数列为a[st ~ mid],第二个数列为a[mid+1 ~ end], 不一定对称,合并结果保存在a[st ~ end]
