@@ -111,7 +111,7 @@ void qs(vector<int>& nums, const int left, const int right)
 // -----------2. 归并排序,速度与快速排序一样-------------
 // 归并: 先递归拆分为单项(有序), 再依次合并相邻两组 为有序. 这样通过先递归的分解数列，再合并数列就完毕了归并排序。
 // 将两个有序数列合并,第一个数列为a[st ~ mid],第二个数列为a[mid+1 ~ end], 不一定对称,合并结果保存在a[st ~ end]
-void merge(int a[],int st,int end,int mid)
+void merge(int a[],int st, int mid, int end) // 合并两个有序数组 如 1,3,5  2,4,6 ---> 1,2,3,4,5,6
 {
     int buf[end-st+1], i, j, iRst=0; // buf缓存比较的结果,最后赋值给a的相应项,iRst暂存需要的索引
     
@@ -132,8 +132,8 @@ void mergeSort(int a[], const int l, const int r)
     if(l >= r) return ;     // 递归结束条件
 	int mid = (l + r) / 2;  // 计算出中间索引直
 	mergeSort(a, l, mid);   // 
-	mergeSort(a, mid+1, r); // 
-	merge(a, l, r, mid);    // 再将二个有序数列合并	
+	mergeSort(a, mid+1, r); // 以上两行为递归分解，分解到最后为单个元素，再递归返回执行 下面这行，依次按序合并
+	merge(a, l, mid, r);    // 再将二个有序数列合并	
 } 
 
 int main()
