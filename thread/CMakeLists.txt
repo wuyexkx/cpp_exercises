@@ -8,4 +8,4 @@ aux_source_directory(./src SRC_LIST)
 
 # target_link_libraries(main my_func)
 
-add_executable(main main.cpp)
+add_executable(lock lock.cpp)
