@@ -27,5 +27,5 @@ include_directories(./include)
 
 # add_executable(for_use for_use.cpp)
 
-add_executable(qs qs.cpp)
+add_executable(testlist testlist.cpp)
 

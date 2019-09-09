@@ -40,3 +40,4 @@ add_library(myInc ${SRC_LIST})
 # target_link_libraries(listQueue_main myInc)
 
 # add_executable(test test.cpp)
+add_executable(graph_DFS graph_DFS.cpp)

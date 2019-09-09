@@ -29,5 +29,5 @@ include_directories(./include)
 
 # add_executable(obj_model obj_model.cpp)
 
-add_executable(lambda lambda.cpp)
+add_executable(variadic_templates variadic_templates.cpp)
 
