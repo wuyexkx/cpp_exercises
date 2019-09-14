@@ -8,6 +8,6 @@ aux_source_directory(./src SRC_LIST)
 
 # target_link_libraries(main my_func)
 # find_package (Threads)
-add_executable(5design_pattern 5design_pattern.cpp)
+add_executable(6condition_wait_notify 6condition_wait_notify.cpp)
 # target_link_libraries (threadjoin ${CMAKE_THREAD_LIBS_INIT})
-target_link_libraries (5design_pattern pthread) # ubuntu下需要连接这个库pthread
+target_link_libraries (6condition_wait_notify pthread) # ubuntu下需要连接这个库pthread
