@@ -1,7 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <array>
-#include <cstdlib>
+#include <cstdio> // snprintf()
 using namespace std;
 
 long get_a_target_long()
