@@ -10,7 +10,7 @@ using namespace std;
 // 双向队列， 内存分段连续的，表面上是全部连续的
 //  stack和queue底层都是直接用deque实现，并没有自己实现一种数据结构。
 //  所以stack和queue在技术上叫 容器适配器（container adapter），表面上是个容器
-
+//  stack和queue不提供iterator和find，等等，不能去操作中间的元素，只能按照这种特殊数据结构去使用
 string get_a_targetStrings()
 {
 long target = 0;
