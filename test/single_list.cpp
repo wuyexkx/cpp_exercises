@@ -18,6 +18,20 @@ int main()
     l.print();
     l.Pop_front();
     l.print();
-    
+
+    l.Push_front(10);
+    l.Push_front(11);
+    l.Push_front(12);
+    l.Push_front(13);
+    l.print();
+    l.Invert();
+    l.print();
+    // output:
+        // 13->12->11->10
+        // 13->12->11
+        // 11
+        // empty!
+        // 13->12->11->10
+        // 10->11->12->13
     return 0;
 }

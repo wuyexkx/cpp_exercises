@@ -17,12 +17,13 @@ class List
 {
 public:
     List(): first(nullptr) { }
-    ~List() // windows下为什么会出问题，不清楚
+    ~List() // windows下为什么会出问题，不清楚（问题已解决，因为delete已经释放了first的内存，但还要找first->link，必然出错)
     {
         while(!isEmpty())
         {
-            delete first; 
-            first = first->link;       
+            auto temp = first; // delete first 如果一开始释放掉first所指的内存，之后就不存在first->link了，
+            first = first->link;  
+            delete temp; 
         }
     }
     void Push_front(const T& item)
@@ -47,8 +48,9 @@ public:
             std::cout << "empty!" << std::endl;
             return;
         }
-        delete first;
+        auto temp =  first; // delete first 如果一开始释放掉first所指的内存，之后就不存在first->link了，
         first = first->link;
+        delete temp;
     }
     void Delete(const T& item)
     {
@@ -66,20 +68,31 @@ public:
         } 
         if(crt) // 找到了
         {
-            delete crt;
+            // delete crt 一定不能先释放，否则找不到crt所指内存
             if(crt == first) first =  crt->link;
             else prev->link = crt->link;
+            delete crt;
         }
     }
     void Invert()
     {
-        auto p = first;
-        Node<T>* q = nullptr;
+        if(isEmpty())
+        {
+            std::cout << "empty!" << std::endl;
+            return;
+        } 
+        Node<T>* p = first;
+        Node<T>* q = 0;
+        Node<T>* prev;
         while(p)
         {
-            q->link = p;
-            p = p->link;
-        }
+            prev = q; 
+
+            q = p;       // q为当前操作的节点
+            p = p->link; // p指向下一个节点
+            q->link = prev; // 将当前操作的节点与后面的link
+        }   
+        first = q;       // 最后 q指向了原来的末尾节点，赋给头结点
     }
     void print() const
     {
