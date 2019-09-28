@@ -2,6 +2,9 @@
 #define __SINGLE_LIST_H
 
 template<class T>
+class list_iterator;
+
+template<class T>
 class Node
 {
 public:
@@ -15,6 +18,8 @@ public:
 template<class T>
 class List
 {
+    friend class list_iterator<T>;
+    typedef list_iterator<T> iter; 
 public:
     List(): first(nullptr) { }
     ~List() // windows下为什么会出问题，不清楚（问题已解决，因为delete已经释放了first的内存，但还要找first->link，必然出错)
@@ -83,10 +88,9 @@ public:
         } 
         Node<T>* p = first;
         Node<T>* q = 0;
-        Node<T>* prev;
         while(p)
         {
-            prev = q; 
+            Node<T>* prev = q; 
 
             q = p;       // q为当前操作的节点
             p = p->link; // p指向下一个节点
@@ -112,8 +116,31 @@ public:
     }
     bool isEmpty() const { return first == nullptr; }
 
+    iter begin()
+    {
+        Node<T>* n = first;
+        return iter(n);
+    }
+
 private:
     Node<T>* first;
+};
+
+// list对应的迭代器
+template<class T>
+class list_iterator
+{
+public:
+    list_iterator(Node<T>* n)
+    : node(n) { }
+    list_iterator& operator++ ()
+    {
+        node = node->link;
+        return *this;
+    }
+
+private:
+    Node<T>* node; 
 };
 
 #endif

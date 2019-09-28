@@ -26,6 +26,10 @@ int main()
     l.print();
     l.Invert();
     l.print();
+
+    auto it = l.begin();
+    ++it;
+
     // output:
         // 13->12->11->10
         // 13->12->11
