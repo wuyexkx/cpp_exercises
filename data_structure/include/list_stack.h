@@ -51,13 +51,13 @@ void listStack<T>::Pop()
 {
     if(!IsEmpty()) 
     {
-        delete top; // 释放掉top所指的空间,但top本身的值还在
-        top = top->link; // 所以在delete top之后 还可以找到top的link
+        // delete top; // 释放掉top所指的空间,但top本身的值还在!!!!!!!!!(error error error, 因为link也是其空间)
+        // top = top->link; // 所以在delete top之后 还可以找到top的link!!!!!!!!!(error error error, 因为link也是其空间)
 
         // 视频里是这样的 https://www.bilibili.com/video/av31763085/?p=19   20:01
-        // Node<T>* n = top;
-        // top = top->link;
-        // delete n;
+        Node<T>* n = top;
+        top = top->link;
+        delete n;
     }
     else std::cerr << "list stack is empty!\n";
 }
