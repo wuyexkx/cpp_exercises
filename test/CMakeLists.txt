@@ -4,5 +4,5 @@ add_compile_options(-std=c++11)
 
 include_directories(./include)
 
-add_executable(single_list single_list.cpp)
+add_executable(list_iterator_test list_iterator_test.cpp)
 
