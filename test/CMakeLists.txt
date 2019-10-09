@@ -4,5 +4,5 @@ add_compile_options(-std=c++11)
 
 include_directories(./include)
 
-add_executable(loop_list_main loop_list_main.cpp)
+add_executable(double_list double_list.cpp)
 
