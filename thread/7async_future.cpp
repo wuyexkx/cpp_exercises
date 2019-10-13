@@ -43,7 +43,7 @@ void threadF3(std::future<int>& tempf)
 }
 
 int main()
-{
+{   // 课程P10 https://www.bilibili.com/video/av49288732/?p=10
     // 一.std::async, std::future创建后台任务并返回 (asynchronous异步, synchron同步)
     // 希望线程返回一个结果
     // std::async 是个函数模板(模板参数为任意返回值类型), 用来启动一个异步任务,启动起来一个异步任务, 之后返回std::future对象
@@ -53,7 +53,7 @@ int main()
         // future.get()一直阻塞到线程返回, 不能多次调用,就一次
         // future.wait()等待线程结束,不返回结果
         // 可以传递参数,std::launch类型(enum类型),
-            // a)std::launch::deferred,表示线程入口函数调用 被延迟到执行wait()或get()时才调用, 根本没有创建线程,都在主线程中执行的
+            // a)std::launch::deferred,（推迟）。表示线程入口函数调用 被延迟到执行wait()或get()时才调用, 根本没有创建线程,都在主线程中执行的 
             // b)std::launch::async, 这是async的默认参数, 创建线程并执行
     cout << "main thread: " << std::this_thread::get_id() << endl;
     // std::future<int> result = std::async(threadF); // 创建完就开始执行线程, 流程继续往下不卡在这(在win下是创建了一个线程 id不同; 但在ubuntu中id相同)
