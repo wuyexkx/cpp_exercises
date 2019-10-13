@@ -13,7 +13,7 @@ using namespace std;
 // 
 // 
 std::mutex resource_mutex;
-std::once_flag flag;
+std::once_flag flag; // 这个标记与call_once()配合使用
 class MyCls
 {
 public:
@@ -58,7 +58,7 @@ public:
         static destrct de1; // static生命周期一直到程序结束
     }
     void print() const { cout << "MyCls::print()." <<endl; }
-    class destrct // 为了释放单例的new
+    class destrct // 为了释放单例的new ，类中的一个类
     {
     public:
         ~destrct()
@@ -75,6 +75,7 @@ private:
     MyCls(const MyCls& ths) { }
     static MyCls* m_instance;
 };
+// 类静态变量初始化，定义
 MyCls *MyCls::m_instance = nullptr;
 
 void print()
