@@ -73,7 +73,7 @@ public:
             msgQueue.push_back(i);
             // 如果相关线程正在处理其他代码，并没有在wait()阻塞，那么这个notify_one()无效。
             // （这种情况在wait()被唤醒过后并且其中第二个参数返回true，将继续往下执行的代码）
-            myCond.notify_one(); // 尝试唤醒执行wait()的那个线程，
+            myCond.notify_one(); // 尝试唤醒阻塞在wait()的那个线程，（如果wait醒了就要干活，首先获取锁，然后干正事）
         }
     }
     void outMsg()
@@ -89,7 +89,7 @@ public:
             // b) 
                 // b.1 如果wait第二个参数，判断参数，参数为flase那么又解锁互斥量，阻塞，再次等待被notify_one唤醒
                 // b.2 如果第二个参数为true，则wait返回，程序往下执行，锁依然锁着。
-                // b.3 如果没有第二个参数，则wait返回，程序往下执行，无条件唤醒。
+                // b.3 如果没有第二个参数，则跟flase一样，释放互斥量，阻塞到这里，等待notify
             myCond.wait(unqlck, [this]() // 第一个参数为unique_lock对象
             {
                 if(!msgQueue.empty())
@@ -116,11 +116,16 @@ private:
 int main()
 {
     // 一、条件变量，std::condition_variable、wait()、notify_one()
+        // std::condition_variable是一个类，需要和互斥量配合使用
+            // wait() 阻塞这里时可以被notify唤醒。会释放也会加锁互斥量，没有锁就要阻塞在这里等待被通知，通知后尝试获取锁；
+            //      有锁（获取到锁就要干活了）就看第二参数为false（或无第二参数）则释放互斥量并阻塞这里等待被notify，true就继续往下执行（锁还在）
+            // notify_one() 通知其他线程执行wait(), 这里要尽快释放锁，因为wait()被唤醒后第一件事就是获取锁。但是通知不一定有效，只有那边阻塞时才有效
+            // notify_all()
     // 一个线程等待某个条件后才继续往下执行，另一个线程通知这个线程条件满足，触发这个线程继续执行。
 
-    // 二、notify_all() 唤醒所有正在等待的wait(), notify_one()一次只唤醒一个
+    // 二、notify_all() 唤醒所有正在等待的wait(), 但是也只能通知到一个线程被唤醒，多个线程时只能平均被唤醒。notify_one()一次只唤醒一个
     
-
+// 整个程序有问题，入命令很多，处理的很少，是否可以考虑多个线程处理命令或者入命令限流
     A cmdObj;
     std::thread thread1(&A::recvMsg, &cmdObj);
     std::thread thread2(&A::outMsg, &cmdObj);
