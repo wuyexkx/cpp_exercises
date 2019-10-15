@@ -8,6 +8,6 @@ aux_source_directory(./src SRC_LIST)
 
 # target_link_libraries(main my_func)
 # find_package (Threads)
-add_executable(10recursive_mutex 10recursive_mutex.cpp)
+add_executable(11fake_awake_thread_pool_nums 11fake_awake_thread_pool_nums.cpp)
 # target_link_libraries (threadjoin ${CMAKE_THREAD_LIBS_INIT})
-target_link_libraries (10recursive_mutex pthread) # ubuntu下需要连接这个库pthread
+target_link_libraries (11fake_awake_thread_pool_nums pthread) # ubuntu下需要连接这个库pthread
