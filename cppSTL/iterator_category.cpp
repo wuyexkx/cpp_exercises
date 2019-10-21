@@ -34,9 +34,9 @@ void _display_category(random_access_iterator_tag)
 { cout << "random_access_iterator_tag" << endl; }
 
 template<class I>
-void display_category(I iter) // 这里的参数没有用，主要是得到template I
+void display_category(const I& iter) // 这里的参数没有用，主要是得到template I
 {
-typename std::iterator_traits<I>::iterator_category cagy;   
+typedef typename std::iterator_traits<I>::iterator_category cagy;   
     // _display_category(cagy); // // 将I丢入萃取机得到其iterator的category ,,error 类型无法相互转换
     cout << "typeid(iter).name()= " << typeid(iter).name() << endl;
 }
