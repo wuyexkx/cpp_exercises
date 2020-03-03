@@ -6,4 +6,4 @@ include_directories(./include)
 # aux_source_directory(./src SRC_LIST)
 # add_library(mysrc ${SRC_LIST})
 
-add_executable(oop_gp oop_gp.cpp)
+add_executable(functor_adaptor functor_adaptor.cpp)

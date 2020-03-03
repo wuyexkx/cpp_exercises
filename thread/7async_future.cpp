@@ -47,19 +47,19 @@ int main()
     // 一.std::async, std::future创建后台任务并返回 (asynchronous异步, synchron同步)
     // 希望线程返回一个结果
     // std::async 是个函数模板(模板参数为任意返回值类型), 用来启动一个异步任务,启动起来一个异步任务, 之后返回std::future对象
-    // "启动一个异步任务",自动创建一个线程并开始执行对应的入口函数, 返回一个std::future对象
+    // "启动一个异步任务",创建一个异步任务并开始执行对应的入口函数, 返回一个std::future对象
         // 在std::future这个对象里边就含有 入口函数的返回结果(也就是线程返回的结果),通过future的get()成员方法获得结果
         // 有称,std::future提供了一种异步操作结果的机制,返回的对象中在将来可以获取到结果
         // future.get()一直阻塞到线程返回, 不能多次调用,就一次
         // future.wait()等待线程结束,不返回结果
         // 可以传递参数,std::launch类型(enum类型),
             // a)std::launch::deferred,（推迟）。表示线程入口函数调用 被延迟到执行wait()或get()时才调用, 根本没有创建线程,都在主线程中执行的 
-            // b)std::launch::async, 这是async的默认参数, 创建线程并执行
+            // b)std::launch::async, 强制创建线程并执行。 默认参数是std::launch::async | std::launch::deferred
     cout << "main thread: " << std::this_thread::get_id() << endl;
     // std::future<int> result = std::async(threadF); // 创建完就开始执行线程, 流程继续往下不卡在这(在win下是创建了一个线程 id不同; 但在ubuntu中id相同)
     // std::future<int> result = std::async(&A::threadF, &a);
     // std::future<int> result = std::async(std::launch::deferred, threadF); // 若后面没有wait或get则线程都不会被创建
-    // std::future<int> result = std::async(std::launch::async, threadF); // 第一个是默认参数, 这样写在ubuntu中会创建线程
+    // std::future<int> result = std::async(std::launch::async, threadF); // , 强制创建线程。 默认参数是std::launch::async | std::launch::deferred(由系统自行选择)
     // cout << result.get() << endl; // 阻塞到这里,等待线程返回
 
 
