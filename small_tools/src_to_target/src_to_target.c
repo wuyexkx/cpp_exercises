@@ -78,6 +78,11 @@ int main(int argc, char**argv)
     while(fgets(buff, MAX_COUNT_PER_LINE, f_read) != NULL){
         line_length = strlen(buff);
 
+        // 存在单词 - 换行的情况
+        if(((buff[line_length - 2] == '-') && buff[line_length - 1] == '\n')){
+            buff[line_length - 2] = '\0';
+            buff[line_length - 1] = '\0';
+        }
         // 存在分段的情况 ".\n" 
         if(((buff[line_length - 2] == '.' || buff[line_length - 2] == ':') && 
              buff[line_length - 1] == '\n')){
