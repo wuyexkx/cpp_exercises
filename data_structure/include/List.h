@@ -64,6 +64,14 @@ void List<T>::Delete(const T& item)
 template<class T>
 void List<T>::Invert() // 反转链表  // 0->1->2->3   1->2->3->0  2->3->1->0  3->2->1->0
 {
+//  p           q       p           q     p        q        p     q          p  q
+//  |           |       |           |     |        |        |     |          |  |
+//  v           v       v           v     v        v        v     v          v  v
+//  0  1  2  3 [ ] ->   1  2  3 [ ] 0     2  3 [ ] 1  0     3 [ ] 2  1  0   [ ] 3  2  1  0  
+//               ^                   ^              ^              ^             ^
+//               |                   |              |              |             |
+//               pv                  pv             pv             pv            pv
+
     ListNode<T>* p = first; // 指向首
     ListNode<T>* q = 0;     // 指向尾 ,首次创建的那个节点link为0
     while(p)
@@ -145,6 +153,5 @@ T* listIterator<T>::Next() // 返回下个节点数据 的地址, 并将当前�
     return 0;
     
 }
-
 
 #endif
