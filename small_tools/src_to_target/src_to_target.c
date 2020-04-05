@@ -11,17 +11,17 @@ int main(int argc, char**argv)
     if(argc > 1){
         // 打印帮助信息
         if(strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "-help") == 0){
-            printf("\n========== <%s> remove '\\n' from string ==========\n", argv[0]);
-            printf("'source.txt' same directory as '%s', \n", argv[0]);
-            printf("auto generate no '\\n' files 'target.txt' same directory.\n");
-            printf("default append to new line to 'target.txt'.\n");
-            printf("\nParameter 'cls a' will clean 'target.txt' and 'source.txt':\n");
-            printf("Ex: %s cls a\n", argv[0]);
-            printf("\nParameter 'cls s' will clean 'source.txt':\n");
-            printf("Ex: %s cls s\n", argv[0]);
-            printf("\nParameter 'cls t' will clean 'target.txt':\n");
-            printf("Ex: %s cls t\n", argv[0]);
-            printf("-----------------------------------------------------------------\n");
+            printf("\n-------------- xxx.exe remove '\\n' from string ---------------\n");
+            printf("'source.txt' same directory as 'xxx.exe', \n");
+            printf("    auto generate no '\\n' files 'target.txt' same directory.\n");
+            printf("    default append to new line to 'target.txt'.\n");
+            printf("\n1. Parameter 'cls a' will clean 'target.txt' and 'source.txt':\n");
+            printf("Ex: xxx.exe cls a\n");
+            printf("\n2. Parameter 'cls s' will clean 'source.txt':\n");
+            printf("Ex: xxx.exe cls s\n");
+            printf("\n3. Parameter 'cls t' will clean 'target.txt':\n");
+            printf("Ex: xxx.exe cls t\n");
+            printf("---------------------------------------------------------------\n");
             getchar();
         }
         else if(strcmp(argv[1], "cls") == 0 && strcmp(argv[2], "s") == 0){
