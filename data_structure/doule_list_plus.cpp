@@ -17,6 +17,7 @@ private:
         T data;
         Node* prev;
         Node* next;
+        // 再插入数据时可以直接对prev和next赋值
         Node(const T& d=T(), Node* p=0, Node* n=0)
         : data(d), prev(p), next(n) { } 
     };    
@@ -28,29 +29,34 @@ public:
     {
         friend class List;
     public:
-        T& operator* () 
+        iterator()
+        : current(0) { }
+        T& operator* () // *it   *it = x 可能通过*修改节点的data
         {
             return current->data;
         }                
-        iterator& operator++ ()
+        iterator& operator++ () // 返回引用
         {
             current = current->next;
             return *this;
         }
-        iterator operator++ (int)
+        iterator operator++ (int) // 返回临时变量
         {
             iterator old = current;            
             ++(*this); // current = current->next;
             return old;
         }       
-        bool operator== (const iterator & rhs)
-        { return (rhs.current == current); }  
-        bool operator!= (const iterator & rhs)
-        { return !(*this == rhs); } // return (&rhs.current != current);          
+        bool operator== (const iterator & itr)
+        { return (itr.current == current); }  
+        bool operator!= (const iterator & itr)
+        { return !(*this == itr); } // return (&itr.current != current);          
     protected:
+        const List<T>* theList;                 // ?
         Node* current;    // 随着节点滑动的节点指针
         iterator(Node* n) // 用Node构造iterator，在begin end中返回
         : current(n) { }
+        iterator(const List<T>& lst, Node* n)   // ?
+        : theList(&lst), current(n) { }
     };
 // ---------------------------------------------------
 
@@ -65,10 +71,11 @@ public:
         // 若把自己赋值给自己
         if (this == &rhs)
             return *this;
-
         // List对象赋值给this这个对象，先清空this对象再依次按照rhs放入
         clear();
-        // for ();  ?
+        for (iterator it=rhs.begin(); it!=rhs.end(); ++it) {
+            (*this).push_back(*it);
+        } 
         return *this;
     }
     ~List()                             // 析构
@@ -86,45 +93,40 @@ public:
 
     // 获取链表前后数据
     const T& front() const
-    {
-        return *begin();
-    }
+    { return *begin(); }
     const T& back() const
-    {
-        return *iterator(tail->prev);
-    }    
+    { return *iterator(tail->prev); }    
     // 从前后插入
-    void push_front(const T& rhs) 
+    void push_front(const T& d) 
     {
-        Node* newNode = new Node(rhs);
-        newNode->next = head->next;
-        newNode->prev = head;
-        head->next->prev = newNode;
-        head->next = newNode;
-        ++theSize;
+        // Node* newNode = new Node(d);
+        // newNode->next = head->next;
+        // newNode->prev = head;
+        // head->next->prev = newNode;
+        // head->next = newNode;
+        // ++theSize;
+        insert(begin(), d);
     }    
-    void push_back(const T& rhs)    
+    void push_back(const T& d)    
     {
-        Node* newNode = new Node(rhs);
-        newNode->next = tail;
-        newNode->prev = tail->prev;
-        tail->prev->next = newNode;
-        tail->prev = newNode;
-        ++theSize;
+        // Node* newNode = new Node(d);
+        // newNode->next = tail;
+        // newNode->prev = tail->prev;
+        // tail->prev->next = newNode;
+        // tail->prev = newNode;
+        // ++theSize;
+        insert(end(), d);
     }   
     // 删除前后
     void pop_front()   
-    {
-        erase(begin());
-    }
+    { erase(begin()); }
     void pop_back() 
-    {
-        erase(iterator(tail->prev));
-    }
+    { erase(iterator(tail->prev)); }
+
     // 擦除，返回下一个
-    iterator erase(const iterator& it)
+    iterator erase(const iterator& itr)
     {
-        Node* p = it.current;   // 取出itr的Node
+        Node* p = itr.current;  // 取出itr的Node
         iterator ret(p->next);  // 用next构造一个itr作为返回值
         p->next->prev = p->prev;// 去掉该Node的链接关系
         p->prev->next = p->next;// 
@@ -141,10 +143,22 @@ public:
         }
         return end;
     }    
-
-    bool ismpty() const
+    // 在itr前插入新节点, 返回新节点的itr
+    iterator insert(const iterator& itr, const T& d) 
     {
-        return (theSize == 0);
+        // Node* newNode = new Node(d);
+        // Node* rNode = itr.current;
+        // newNode->next = rNode;
+        // newNode->prev = rNode->prev;
+        // rNode->prev->next = newNode;
+        // rNode->prev = newNode;
+        // ++theSize;
+        // return iterator(newNode);
+        Node* rNode = itr.current;  
+        Node* newNode = new Node(d, rNode->prev, rNode);
+        rNode->prev = rNode->prev->next = newNode;
+        ++theSize;
+        return iterator(newNode);
     }
     void clear() 
     {
@@ -153,6 +167,8 @@ public:
     }
     int size() const
     { return theSize; }
+    bool ismpty() const
+    { return (size() == 0); }    
     void show() const 
     {
         for (auto it=begin(); it!=end(); ++it) { 
@@ -177,7 +193,7 @@ private:
 
 int main()
 {
-#define NUMS    (5)    
+#define NUMS    (6)    
 
     List<int> list;
     // 存放
@@ -208,29 +224,29 @@ int main()
     // pop掉再看
     list.pop_front();
     list.pop_back();
-    cout << list.front() << " " << list.back() << endl;
-
-    // pop掉再看
-    list.pop_front();
-    list.pop_back();
-    cout << list.front() << " " << list.back() << endl;    
-
-    // pop掉再看
-    list.pop_front();
-    list.pop_back();
     cout << list.front() << " " << list.back() << endl; 
+    
+    list.show();
+
+    for (auto it=list.begin(); it!=list.end(); ++it) { 
+        if (*it % 2)
+            *it = 555;
+    }
+    list.show();
 
     cout << "\n========" << endl;
 
 // stdout:
-//     9 8 7 6 5 0 1 2 3 4 
-//     9 7 5 1 3
-//     clear():
-//     0 1 2 3 4  
-//     0 4
-//     1 3
-//     2 2
-//     Segmentation fault    
+    // 11 10 9 8 7 6 0 1 2 3 4 5 
+    // 11 9 7 0 2 4
+    // clear():
+    // 0 1 2 3 4 5
+    // 0 5
+    // 1 4
+    // 1 2 3 4
+    // 555 2 555 4
+
+    // ======== 
 
     return 0;
 }
