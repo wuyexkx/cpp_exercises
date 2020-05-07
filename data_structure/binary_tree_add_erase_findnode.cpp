@@ -4,6 +4,7 @@ using namespace std;
 
 
 // 链式队列，在二叉树的层序遍历中用
+// 用head和tail指针分别指向队首和尾
 // -------------------- list_queue ------------------------
 template<typename T>
 class list_queue
