@@ -5,6 +5,7 @@ using namespace std;
 template<typename T>
 class Graph;
 
+// 顶点只负责存储数据
 // 每个顶点 连接的其他顶点用链表表示
 // 在实现邻接表 的时候可以把 表(数组实现)和连接关系(链表实现)分开
 template<typename T>
@@ -14,16 +15,14 @@ class Vertex
 public:
     Vertex(const T& dt)
     : data(dt) { }
-    T& getData() { return data; } 
+    T get_data() const { return data; } 
 private:
     T data;
 };
-// 需要输出l
+// 重载<<，输出Vertex数据时用到
 template<typename T>
-inline ostream& operator<< (ostream& os, Vertex<T>& v)
-{
-    return os << v.getData();;
-}
+inline ostream& operator<< (ostream& os, const Vertex<T>& v)
+{ return os << v.get_data(); }
 
 template<typename T>
 class Graph
@@ -56,7 +55,7 @@ void Graph<T>::addVertex( Vertex<T>& v) // 添加顶点
 template<typename T>
 void Graph<T>::addEdge(const Vertex<T>& v1, const Vertex<T>& v2) // 添加边 对应关系
 {
-    lists[v1.data - 65].push_back(v2); // 直接在对应的list里添加节点
+    lists[v1.get_data() - 'A'].push_back(v2); // 直接在对应的list里添加节点
 }
 template<typename T>
 void Graph<T>::printVertex() const // 打印顶点
@@ -70,7 +69,7 @@ void Graph<T>::printAdjList() const // 打印顶点连接关系
 {
     for(int i=0; i<nVertex; i++)    // 遍历每个顶点 
     {
-        cout << vertexTable[i]->data; // 依次输出顶点
+        cout << vertexTable[i]->get_data(); // 依次输出顶点
         for(auto l : lists[i])        // 遍历每个顶点的连接关系
             cout  << "->" << l; // Vertex<int> 重载了 <<
         cout << endl;
