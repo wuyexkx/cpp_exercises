@@ -1,13 +1,13 @@
 #include <iostream>
 #include "myutil.h"
-#include "mystack.h"
+#include "SeqStack.h"
 
 using namespace std;
 
 
 int main()
 {
-    mystack<int> st(100);
+    SeqStack<int> st(100);
     st.Push(1);
     cout << st.Top() << endl;
     st.Push(55);

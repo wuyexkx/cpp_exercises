@@ -1,14 +1,14 @@
-#ifndef __MYSTACK_H
-#define __MYSTACK_H
+#ifndef __SEQSTACK_H
+#define __SEQSTACK_H
 
 #include "myutil.h"
 
 template<class T>
-class mystack
+class SeqStack
 {
 public:
-    mystack(int stackCapacity = 10);
-    ~mystack();
+    SeqStack(int stackCapacity = 10);
+    ~SeqStack();
     bool isEmpty() const;     // 判断是否为空
     T& Top() const;           // 弹出栈顶
     void Push(const T& item); // 压入堆栈
@@ -20,7 +20,7 @@ private:
 };
 
 template<class T>
-mystack<T>::mystack(int stackCapacity)
+SeqStack<T>::SeqStack(int stackCapacity)
 : capacity(stackCapacity)
 {
     if(capacity < 1) throw "stack capacity must > 0\n";
@@ -28,13 +28,13 @@ mystack<T>::mystack(int stackCapacity)
     top = -1; // 初始堆栈为空
 }   
 template<class T>
-mystack<T>::~mystack()
+SeqStack<T>::~SeqStack()
 {
     delete[] stack;
 }
 
 template<class T> // 压入堆栈
-void mystack<T>::Push(const T& item)
+void SeqStack<T>::Push(const T& item)
 {
     if(top == capacity - 1) // 如果堆栈存满,那就扩大容量
     {
@@ -45,20 +45,20 @@ void mystack<T>::Push(const T& item)
 }
 
 template<class T> // 判断是否为空
-inline bool mystack<T>::isEmpty() const
+inline bool SeqStack<T>::isEmpty() const
 {
     return top == -1;
 }
 
 template<class T> // 弹出栈顶
-inline T& mystack<T>::Top() const
+inline T& SeqStack<T>::Top() const
 {
     if(isEmpty()) throw "Stack is empty!\n";
     return stack[top];
 }
 
 template<class T> // 删除栈顶
-void mystack<T>::Pop()
+void SeqStack<T>::Pop()
 {
     if(isEmpty()) throw "Stack is empty!\n";
     stack[top--].~T(); // 如果存放的是class, 需要调用它的析构函数. 也许存放的不是简单的数据类型
