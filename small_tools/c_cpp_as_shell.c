@@ -6,14 +6,19 @@ if [ "${filename##*.}"x = "cpp"x ];then # 判断后缀名 cpp
 CC="g++"
 fi
 $CC -o $name "$0" 						
-./$name "$@"	                        # 为可执行文件传递参数      	
+$name "$@"	                            # 为可执行文件传递参数      	
 rm $name
 exit 
 #endif
 
 #include<stdio.h>
-int main()
+
+int main(int argc, char** argv)
 {
-    printf("hello world!\n");
+    printf("argc:%d\n", argc);
+    
+    for (int i=0; i<argc; ++i)
+        printf("argv[%d]:%s\n", i, argv[i]);
+
     return 0;
 }
