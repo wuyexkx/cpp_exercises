@@ -184,5 +184,16 @@ int main()
 //    in: 4 3 c 2 b 1 a 
 //  post: 4 c 3 b 2 a 1 
 // level: 1 2 a 3 b 4 c 
+
+// 根据前序遍历 和 中序遍历 求 树的后序遍历
+// ABDEHICFKG  pre
+// DBHEIAFKCG  in
+//              --> DHIEBKFGC  post
+
+// 根据后序遍历 和 中序遍历 求 树的前序遍历
+// DCBGEAHFIJK  in
+// DCEGBFHKJIA  post
+//              --> ABCDGEIHFJK  pre
+
     return 0;
 }
