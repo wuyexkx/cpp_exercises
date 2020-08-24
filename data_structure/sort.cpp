@@ -39,22 +39,22 @@ void selectSort(vector<int>& nums)
     }
 }
 // --------3.插入排序,低级排序中最快,新出来的项插入已排好的序列----------
- void insertSort(vector<int>& nums)
- {
-    int in, out;
-    for(out=1; out<nums.size(); out++)
-    {
-        // in表示将要插入的索引,out表示取出的索引
-        in = out; // 从最后开始比较
-        int temp = nums[out]; // 暂存刚取出来的项
-        while(in>0 && nums[in-1] >= temp) // 没有比较到第0个元素 并且 前一项 >= 刚取出来的项
-        {
-            nums[in] = nums[in-1]; // 每次都把 大的那一项放后面 in-1项腾出空位
-            --in; // 继续往前找, --in将in-1项作为当前项
-        } // 如果暂存值大于前一项直接赋值到当前项,如果不是就在while里找到正确的in值
-        nums[in] = temp; // 将暂存值插入已排好的序列  
+// 对于大部分有序的数组非常有用，类似打扑克牌，插入到有序数中
+// 外层从 1 开始，暂存腾出空位，依次和前面的数比较，插入到合适位置
+// 前面的数依次往后挪动，将暂存值放入合适的地方
+// 时间复杂度O(n^2)
+void insertsort(vector<int>& nums)
+{
+    for (int i = 1; i < nums.size(); i++) { // i 指向工作的那个元素
+        int j = i - 1;                      // j 初始指向工作的前一个，依次往前移动
+        int tmp = nums[i];                  // 暂存工作值，腾出空位
+        while (j >= 0 && nums[j] > tmp) {   // 依次往前 查找合适的位置
+            nums[j + 1] = nums[j];          // 依次留出空位
+            j--;                            // j--
+        }
+        nums[j + 1] = tmp;                  // 暂存值放入位置，为什么是 j+1，跳出while的条件可能是 j<0 or nums[j]>tmp 就不能放那里了
     }
- }
+}
 
 
 // 高级排序算法
